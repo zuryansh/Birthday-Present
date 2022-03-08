@@ -7,15 +7,21 @@ public class GameManager : MonoBehaviour
 {
 
     public static GameManager instance;
+    public int coins;
+    public SceneRandomiser sceneRandomiser;
 
     private void Start()
     {
 
         instance = this;
+        sceneRandomiser = GetComponent<SceneRandomiser>();
     }
+
+
 
     public void GameOver()
     {
+        Debug.Log("GAME OVBERT");
         FindObjectOfType<PlayerMovement>().enabled = false;
         Invoke("ResetLevel", 1f);
     }
@@ -28,5 +34,6 @@ public class GameManager : MonoBehaviour
     public void ResetLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //sceneRandomiser.LoadNextScene();
     }
 }
