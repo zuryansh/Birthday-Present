@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class GameManager : MonoBehaviour
     public int coins;
     public SceneRandomiser sceneRandomiser;
     public TextMeshProUGUI coinsText;
+
+
 
     private void Start()
     {
@@ -36,6 +40,14 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.DeleteKey("HighestLevel");
             Debug.Log("ERASED");
         }
+
+       
+    }
+
+    public void ToggleAudio(bool value)
+    {
+        GetComponent<AudioSource>().mute = !value;
+
     }
 
     public void GameOver()
@@ -45,7 +57,7 @@ public class GameManager : MonoBehaviour
         player.enabled = false;
         ParticleSystem.EmissionModule particles = player.GetComponentInChildren<ParticleSystem>().emission;
         particles.enabled = false;
-        
+        //ToggleAudio(false);
 
         Invoke("ResetLevel", 1.5f);
     }
@@ -54,9 +66,9 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
-        if(PlayerPrefs.GetInt("HighestLevel") < SceneManager.GetActiveScene().buildIndex + 1)
+        if(PlayerPrefs.GetInt("HighestLevel") < SceneManager.GetActiveScene().buildIndex - 1)
         {
-            PlayerPrefs.SetInt("HighestLevel", SceneManager.GetActiveScene().buildIndex + 1);
+            PlayerPrefs.SetInt("HighestLevel", SceneManager.GetActiveScene().buildIndex - 1);
 
         }
         Debug.Log(PlayerPrefs.GetInt("HighestLevel"));
@@ -66,7 +78,10 @@ public class GameManager : MonoBehaviour
     {
         coins = 0;
 
+        //ToggleAudio(true);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+
         //sceneRandomiser.LoadNextScene();
     }
 }

@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 8560793173e7a244fac9baf875e63083, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: 8f53f66ffe08bca43a2fcf952e21911f, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -2995,6 +2995,10 @@ PrefabInstance:
       propertyPath: transition
       value: 
       objectReference: {fileID: 2065057914}
+    - target: {fileID: 453120650418313784, guid: 11d15c2d0237b5f489d4703106b4b01c, type: 3}
+      propertyPath: PauseScreen
+      value: 
+      objectReference: {fileID: 1950465146}
     - target: {fileID: 2979355361047904461, guid: 11d15c2d0237b5f489d4703106b4b01c, type: 3}
       propertyPath: m_Name
       value: LevelLoader
@@ -3045,6 +3049,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11d15c2d0237b5f489d4703106b4b01c, type: 3}
+--- !u!114 &1026921204 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 453120650418313784, guid: 11d15c2d0237b5f489d4703106b4b01c, type: 3}
+  m_PrefabInstance: {fileID: 1026921203}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4df6e86ebec45349ac9c17e393153d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1052745458
 GameObject:
   m_ObjectHideFlags: 0
@@ -8673,6 +8688,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1733581229, guid: e6ab11847ccb6594aa6ab97c298e6833, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1026921204}
+    - target: {fileID: 1733581229, guid: e6ab11847ccb6594aa6ab97c298e6833, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadScene
+      objectReference: {fileID: 0}
     - target: {fileID: 5353282052847153728, guid: e6ab11847ccb6594aa6ab97c298e6833, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -8769,19 +8792,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 155.1
       objectReference: {fileID: 0}
+    - target: {fileID: 5480435235361390293, guid: e6ab11847ccb6594aa6ab97c298e6833, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1026921204}
+    - target: {fileID: 5480435235361390293, guid: e6ab11847ccb6594aa6ab97c298e6833, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PauseGame
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6ab11847ccb6594aa6ab97c298e6833, type: 3}
---- !u!114 &1309662033 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5353282054703331559, guid: e6ab11847ccb6594aa6ab97c298e6833, type: 3}
-  m_PrefabInstance: {fileID: 1309662032}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1310946432 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1825297561050405795, guid: 9169311d55b9ce94cac6370c5df02768, type: 3}
@@ -10294,6 +10314,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1825297561050405795, guid: 9169311d55b9ce94cac6370c5df02768, type: 3}
   m_PrefabInstance: {fileID: 419147637}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1950465146 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1158046124, guid: e6ab11847ccb6594aa6ab97c298e6833, type: 3}
+  m_PrefabInstance: {fileID: 1309662032}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1951262266 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1825297561050405795, guid: 9169311d55b9ce94cac6370c5df02768, type: 3}
@@ -11122,7 +11147,7 @@ PrefabInstance:
     - target: {fileID: 6738652436408025680, guid: 0f0c3a4a418f11448a3c0cf815aad8e3, type: 3}
       propertyPath: coinsText
       value: 
-      objectReference: {fileID: 1309662033}
+      objectReference: {fileID: 0}
     - target: {fileID: 6738652436408025681, guid: 0f0c3a4a418f11448a3c0cf815aad8e3, type: 3}
       propertyPath: m_Name
       value: GameManager

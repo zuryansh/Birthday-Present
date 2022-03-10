@@ -11,25 +11,33 @@ public class LevelLoader : MonoBehaviour
 
     public void LoadScene(string scene)
     {
+        Debug.Log("LOAD");
+        Time.timeScale = 1;
         StartCoroutine(Transition(scene));
+
     }
 
     IEnumerator Transition(string name)
     {
         //play animation
-        transition.SetTrigger("Fade");
+        if (transition != null)
+        {
+            transition.SetTrigger("Fade");
+        }
+        //GameManager.instance.ToggleAudio(false);
+
         //wait
         yield return new WaitForSeconds(transitionTime);
         //load scene
         SceneManager.LoadScene(name);
     }
 
-    //public void PauseGame()
-    //{
-    //    StartCoroutine(DelayedPause());
-    //}
+    public void PauseGame()
+    {
+        StartCoroutine(DelayedPause());
+    }
 
-    void PauseGame()
+    IEnumerator DelayedPause()
     {
         if (Time.timeScale > 0)
         {
@@ -39,8 +47,8 @@ public class LevelLoader : MonoBehaviour
         else if (Time.timeScale == 0)
         {
             PauseScreen.SetActive(false);
-            //yield return new WaitForSeconds(2f);
-            Debug.Log("UNPAUSE");
+            yield return new WaitForSecondsRealtime(2f);
+            //Debug.Log("UNPAUSE");
             Time.timeScale = 1;
         }
 
@@ -50,5 +58,11 @@ public class LevelLoader : MonoBehaviour
     {
         Debug.Log("QUIT");
         Application.Quit();
+    }
+
+    public void ChangeQuality(int index)
+    {
+        QualitySettings.SetQualityLevel(index+1);
+        Debug.Log(QualitySettings.GetQualityLevel()+1);
     }
 }
