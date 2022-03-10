@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
 
 	public float fowardLimit;
 	GameManager gameManager;
+	public float mobileForce = 50;
+	public float mobileLimit;
 
     // Start is called before the first frame update
     void Start()
@@ -28,20 +30,51 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
+
 		if(rb.velocity.z<fowardLimit)
 			rb.AddForce(0, 0, forwardForce * Time.deltaTime);
 
 		if (Input.GetKey("d"))  
 		{
-			
-			rb.AddForce(sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+			Debug.Log("RIGHT");
+			TurnRight(sidewaysForce);	
 		}
 
 		if (Input.GetKey("a")) 
 		{
-			
-			rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+			Debug.Log("LEFT");
+
+			TurnLeft(sidewaysForce);
 		}
+
+		if (Input.touchCount > 0)
+		{
+			Touch touch = Input.GetTouch(0);
+			if (touch.position.x > Screen.width / 2)
+			{
+				Debug.Log("RIGHT");
+
+				TurnRight(sidewaysForce);
+			}
+			else if (touch.position.x < Screen.width / 2)
+			{
+				Debug.Log("LEFT");
+
+				TurnLeft(sidewaysForce);
+			}
+
+		}
+	}
+
+	void TurnLeft(float force)
+	{
+		rb.AddForce(-force * Time.fixedDeltaTime, 0, 0, ForceMode.VelocityChange);
+
+	}
+	void TurnRight(float force)
+	{
+		rb.AddForce(force * Time.fixedDeltaTime, 0, 0, ForceMode.VelocityChange);
+
 	}
 
 }
